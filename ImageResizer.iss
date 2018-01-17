@@ -1,19 +1,19 @@
 [Setup]
-AppName=Image Resizer
-AppVerName=Image Resizer; Release: 1.0.1.3
-AppPublisher=Shady Industries
-AppPublisherURL=http://www.shadyindustries.com/
-AppSupportURL=http://www.shadyindustries.com/programs/imageresizer/help.php?v=1.0.1.3
-AppUpdatesURL=http://www.shadyindustries.com/programs/imageresizer/version.php?v=1.0.1.3
-AppVersion=1.0.1.3
-DefaultDirName={pf}\Shady Industries\Image Resizer
-DefaultGroupName=Shady Industries\Image Resizer
+AppName=ImageResizer
+AppVerName=ImageResizer 0.9.0.0
+AppPublisher=Nicholas Parks Young
+AppPublisherURL=https://github.com/Alarm-Siren/ImageResizer
+AppSupportURL=https://github.com/Alarm-Siren/ImageResizer/issues
+AppUpdatesURL=https://github.com/Alarm-Siren/ImageResizer/releases
+AppVersion=0.9.0.0
+DefaultDirName={pf}\Shady Industries\ImageResizer
+DefaultGroupName=Shady Industries\ImageResizer
 OutputDir=bin
 OutputBaseFilename=setup
 Compression=lzma/max
 PrivilegesRequired=admin
 SolidCompression=yes
-LicenseFile=src\license.txt
+LicenseFile=license.txt
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -23,18 +23,18 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 ;Main Files
-Source: "src\Image Resizer.exe"; DestDir: "{app}";
-Source: "src\Image Resizer.exe.config"; DestDir: "{app}";
-Source: "src\Image Resizer.pdb"; DestDir: "{app}";
-Source: "src\License.txt"; DestDir: "{app}";
+Source: "ImageResizer.exe"; DestDir: "{app}";
+Source: "ImageResizer.exe.config"; DestDir: "{app}";
+Source: "ImageResizer.pdb"; DestDir: "{app}";
+Source: "license.txt"; DestDir: "{app}";
 
 [Icons]
-Name: "{group}\Image Resizer"; Filename: "{app}\Image Resizer.exe"
+Name: "{group}\ImageResizer"; Filename: "{app}\ImageResizer.exe"
 Name: "{group}\{cm:UninstallProgram,Image Resizer}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\Image Resizer"; Filename: "{app}\Image Resizer.exe"; Tasks: desktopicon
+Name: "{commondesktop}\ImageResizer"; Filename: "{app}\ImageResizer.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\Image Resizer.exe"; Description: "{cm:LaunchProgram,Image Resizer}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\ImageResizer.exe"; Description: "{cm:LaunchProgram,ImageResizer}"; Flags: nowait postinstall skipifsilent
 
 [CustomMessages]
 dotnetmissing=This application needs Microsoft .NET Framework 3.5 which is not yet installed. Would you like to download it now?
