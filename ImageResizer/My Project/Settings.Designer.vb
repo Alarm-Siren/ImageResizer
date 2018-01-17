@@ -126,38 +126,38 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("Png")> _
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Png")>  _
         Public Property DefaultOutputFormat() As Global.System.Drawing.Imaging.ImageFormat
             Get
-                Return CType(Me("DefaultOutputFormat"), Global.System.Drawing.Imaging.ImageFormat)
+                Return CType(Me("DefaultOutputFormat"),Global.System.Drawing.Imaging.ImageFormat)
             End Get
-            Set(value As Global.System.Drawing.Imaging.ImageFormat)
+            Set
                 Me("DefaultOutputFormat") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("HighQualityBicubic")> _
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("HighQualityBicubic")>  _
         Public Property DefaultOutputQuality() As Global.System.Drawing.Drawing2D.InterpolationMode
             Get
-                Return CType(Me("DefaultOutputQuality"), Global.System.Drawing.Drawing2D.InterpolationMode)
+                Return CType(Me("DefaultOutputQuality"),Global.System.Drawing.Drawing2D.InterpolationMode)
             End Get
-            Set(value As Global.System.Drawing.Drawing2D.InterpolationMode)
+            Set
                 Me("DefaultOutputQuality") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property DefaultForceOutputFormat() As Boolean
             Get
-                Return CType(Me("DefaultForceOutputFormat"), Boolean)
+                Return CType(Me("DefaultForceOutputFormat"),Boolean)
             End Get
-            Set(value As Boolean)
+            Set
                 Me("DefaultForceOutputFormat") = value
             End Set
         End Property

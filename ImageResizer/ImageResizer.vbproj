@@ -12,7 +12,7 @@
     <AssemblyName>ImageResizer</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>On</OptionStrict>
@@ -33,6 +33,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
