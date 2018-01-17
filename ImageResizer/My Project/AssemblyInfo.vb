@@ -9,16 +9,16 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("ImageResizer")> 
-<Assembly: AssemblyDescription("A Program to bulk resizes images")> 
-<Assembly: AssemblyCompany("Shady Industries")> 
-<Assembly: AssemblyProduct("Shady Industries' Image Resizer")> 
-<Assembly: AssemblyCopyright("Copyright © Nicholas Parks Young, 2009-2018. Some Rights Reserved.")> 
+<Assembly: AssemblyDescription("A free, open-source utility for easily resizing large batches of images.")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("ImageResizer")> 
+<Assembly: AssemblyCopyright("Copyright © Nicholas Parks Young, 2009-2018.")> 
 <Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("2cd0d4bc-2bf9-44a5-aa79-75d03741e3aa")> 
+<Assembly: Guid("adb0751e-a20a-4337-9527-01a3d5cd140b")> 
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -29,7 +29,6 @@ Imports System.Runtime.InteropServices
 '
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
-' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.9.0.0")> 
-<Assembly: AssemblyFileVersion("0.9.0.0")> 
+<Assembly: AssemblyVersion("0.9.0")> 
+<Assembly: AssemblyFileVersion("0.9.0")> 

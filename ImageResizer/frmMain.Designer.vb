@@ -93,7 +93,7 @@ Partial Class frmMain
         Me.cmdStart.Name = "cmdStart"
         Me.cmdStart.Size = New System.Drawing.Size(151, 23)
         Me.cmdStart.TabIndex = 12
-        Me.cmdStart.Text = "Start"
+        Me.cmdStart.Text = "&Start"
         Me.cmdStart.UseVisualStyleBackColor = True
         '
         'cmdAbout
@@ -102,7 +102,7 @@ Partial Class frmMain
         Me.cmdAbout.Name = "cmdAbout"
         Me.cmdAbout.Size = New System.Drawing.Size(56, 23)
         Me.cmdAbout.TabIndex = 14
-        Me.cmdAbout.Text = "About"
+        Me.cmdAbout.Text = "&About"
         Me.cmdAbout.UseVisualStyleBackColor = True
         '
         'chkSizeFilename
@@ -253,7 +253,7 @@ Partial Class frmMain
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(151, 23)
         Me.cmdCancel.TabIndex = 13
-        Me.cmdCancel.Text = "Cancel"
+        Me.cmdCancel.Text = "&Cancel"
         Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'frmMain
@@ -289,6 +289,7 @@ Partial Class frmMain
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "frmMain"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ImageResizer"
         CType(Me.numHeight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numWidth, System.ComponentModel.ISupportInitialize).EndInit()

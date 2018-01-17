@@ -211,13 +211,11 @@ myError:
         StopProcess = True
     End Sub
 
-
-    Private Sub cmdUpdates_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAbout.Click
-        System.Diagnostics.Process.Start("https://github.com/Alarm-Siren/ImageResizer/releases")
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = My.Application.Info.Title
     End Sub
 
-    Private Sub cmdHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        System.Diagnostics.Process.Start("https://github.com/Alarm-Siren/ImageResizer/issues")
+    Private Sub cmdAbout_Click(sender As Object, e As EventArgs) Handles cmdAbout.Click
+        frmAbout.ShowDialog()
     End Sub
-
 End Class
