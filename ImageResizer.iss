@@ -8,12 +8,12 @@ AppUpdatesURL=https://github.com/Alarm-Siren/ImageResizer/releases
 AppVersion=0.9.0.0
 DefaultDirName={pf}\Shady Industries\ImageResizer
 DefaultGroupName=Shady Industries\ImageResizer
-OutputDir=bin
+OutputDir=ImageResizer\bin\Release
 OutputBaseFilename=setup
 Compression=lzma/max
 PrivilegesRequired=admin
 SolidCompression=yes
-LicenseFile=license.txt
+LicenseFile=LICENSE.txt
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -23,10 +23,11 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 ;Main Files
-Source: "ImageResizer.exe"; DestDir: "{app}";
-Source: "ImageResizer.exe.config"; DestDir: "{app}";
-Source: "ImageResizer.pdb"; DestDir: "{app}";
-Source: "license.txt"; DestDir: "{app}";
+Source: "ImageResizer\bin\Release\ImageResizer.exe"; DestDir: "{app}";
+Source: "ImageResizer\bin\Release\ImageResizer.exe.config"; DestDir: "{app}";
+Source: "ImageResizer\bin\Release\ImageResizer.pdb"; DestDir: "{app}";
+Source: "LICENSE.txt"; DestDir: "{app}";
+Source: "README.md"; DestDir: "{app}";
 
 [Icons]
 Name: "{group}\ImageResizer"; Filename: "{app}\ImageResizer.exe"
