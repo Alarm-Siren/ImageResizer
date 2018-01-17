@@ -1,4 +1,4 @@
-#define AppVer GetFileVersion('ImageResizer\bin\Release\ImageResizer.exe')
+#define AppVer GetFileVersion(AddBackslash(SourcePath) + "ImageResizer.exe")
 
 [Setup]
 AppName=ImageResizer
