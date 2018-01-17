@@ -27,7 +27,6 @@ Partial Class frmAbout
         Me.btnUpdates = New System.Windows.Forms.Button()
         Me.btnWebsite = New System.Windows.Forms.Button()
         Me.btnLicense = New System.Windows.Forms.Button()
-        Me.btnReadme = New System.Windows.Forms.Button()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.lblVersion = New System.Windows.Forms.Label()
         Me.lblDescription = New System.Windows.Forms.Label()
@@ -65,21 +64,11 @@ Partial Class frmAbout
         'btnLicense
         '
         Me.btnLicense.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnLicense.Location = New System.Drawing.Point(280, 128)
+        Me.btnLicense.Location = New System.Drawing.Point(280, 90)
         Me.btnLicense.Name = "btnLicense"
         Me.btnLicense.Size = New System.Drawing.Size(122, 32)
         Me.btnLicense.TabIndex = 4
         Me.btnLicense.Text = "Read &License"
-        '
-        'btnReadme
-        '
-        Me.btnReadme.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnReadme.Location = New System.Drawing.Point(280, 90)
-        Me.btnReadme.Name = "btnReadme"
-        Me.btnReadme.Size = New System.Drawing.Size(122, 32)
-        Me.btnReadme.TabIndex = 5
-        Me.btnReadme.Tag = ""
-        Me.btnReadme.Text = "Open &Readme"
         '
         'lblTitle
         '
@@ -126,7 +115,6 @@ Partial Class frmAbout
         Me.Controls.Add(Me.lblDescription)
         Me.Controls.Add(Me.lblVersion)
         Me.Controls.Add(Me.lblTitle)
-        Me.Controls.Add(Me.btnReadme)
         Me.Controls.Add(Me.btnLicense)
         Me.Controls.Add(Me.btnWebsite)
         Me.Controls.Add(Me.btnUpdates)
@@ -147,7 +135,6 @@ Partial Class frmAbout
     Friend WithEvents btnUpdates As System.Windows.Forms.Button
     Friend WithEvents btnWebsite As System.Windows.Forms.Button
     Friend WithEvents btnLicense As System.Windows.Forms.Button
-    Friend WithEvents btnReadme As System.Windows.Forms.Button
     Friend WithEvents lblTitle As System.Windows.Forms.Label
     Friend WithEvents lblVersion As System.Windows.Forms.Label
     Friend WithEvents lblDescription As System.Windows.Forms.Label

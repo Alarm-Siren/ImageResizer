@@ -28,7 +28,7 @@ Source: "ImageResizer\bin\Release\ImageResizer.exe"; DestDir: "{app}";
 Source: "ImageResizer\bin\Release\ImageResizer.exe.config"; DestDir: "{app}";
 Source: "ImageResizer\bin\Release\ImageResizer.pdb"; DestDir: "{app}";
 Source: "LICENSE.txt"; DestDir: "{app}";
-Source: "README.md"; DestDir: "{app}";
+Source: "README.txt"; DestDir: "{app}";
 
 [Icons]
 Name: "{group}\ImageResizer"; Filename: "{app}\ImageResizer.exe"
