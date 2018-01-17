@@ -1,15 +1,17 @@
+#define AppVer GetFileVersion('ImageResizer\bin\Release\ImageResizer.exe')
+
 [Setup]
 AppName=ImageResizer
-AppVerName=ImageResizer 0.9.0.0
+AppVerName=ImageResizer {#AppVer}
 AppPublisher=Nicholas Parks Young
 AppPublisherURL=https://github.com/Alarm-Siren/ImageResizer
 AppSupportURL=https://github.com/Alarm-Siren/ImageResizer/issues
 AppUpdatesURL=https://github.com/Alarm-Siren/ImageResizer/releases
-AppVersion=0.9.0.0
-DefaultDirName={pf}\Shady Industries\ImageResizer
-DefaultGroupName=Shady Industries\ImageResizer
+AppVersion={#AppVer}
+DefaultDirName={pf}\ImageResizer
+DefaultGroupName=ImageResizer
 OutputDir=ImageResizer\bin\Release
-OutputBaseFilename=setup
+OutputBaseFilename=ImageResizer-{#AppVer}-setup
 Compression=lzma/max
 PrivilegesRequired=admin
 SolidCompression=yes
@@ -22,7 +24,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-;Main Files
 Source: "ImageResizer\bin\Release\ImageResizer.exe"; DestDir: "{app}";
 Source: "ImageResizer\bin\Release\ImageResizer.exe.config"; DestDir: "{app}";
 Source: "ImageResizer\bin\Release\ImageResizer.pdb"; DestDir: "{app}";
