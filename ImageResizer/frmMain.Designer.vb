@@ -248,10 +248,12 @@ Partial Class frmMain
         '
         'txtOutputFolder
         '
+        Me.txtOutputFolder.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.ImageResizer.My.MySettings.Default, "DefaultDestination", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.txtOutputFolder.Location = New System.Drawing.Point(92, 41)
         Me.txtOutputFolder.Name = "txtOutputFolder"
         Me.txtOutputFolder.Size = New System.Drawing.Size(239, 20)
         Me.txtOutputFolder.TabIndex = 3
+        Me.txtOutputFolder.Text = Global.ImageResizer.My.MySettings.Default.DefaultDestination
         '
         'txtInputFolder
         '

@@ -1,37 +1,52 @@
 ﻿Public Class clsResizeThread
 
-    Public Event ProcessingStart(ByVal sender As System.Object, ByVal FilesFound As UInteger)
-    Public Event FileStart(ByVal sender As System.Object, ByVal filename As String)
-    Public Event FileDone(ByVal sender As System.Object, ByVal filename As String)
-    Public Event FileError(ByVal sender As System.Object, ByVal filename As String, ByVal message As String)
-    Public Event ProcessingEnd(ByVal sender As System.Object, ByVal FilesProcessed As UInteger)
+    Public Event ProcessingStart(ByVal sender As System.Object, ByVal e As ProcessingStartEventArgs)
+    Public Event FileStart(ByVal sender As System.Object, ByVal e As FileStartEventArgs)
+    Public Event FileDone(ByVal sender As System.Object, ByVal e As FileDoneEventArgs)
+    Public Event FileError(ByVal sender As System.Object, ByVal e As FileErrorEventArgs)
+    Public Event ProcessingEnd(ByVal sender As System.Object, ByVal e As ProcessingEndEventArgs)
+
+    Public Structure ProcessingStartEventArgs
+        Public FilesFound As UInteger
+    End Structure
+
+    Public Structure FileStartEventArgs
+        Public Filename As String
+    End Structure
+
+    Public Structure FileDoneEventArgs
+        Public Filename As String
+    End Structure
+
+    Public Structure FileErrorEventArgs
+        Public Filename As String
+        Public Message As String
+    End Structure
+
+    Public Structure ProcessingEndEventArgs
+        Public FilesProcessed As UInteger
+    End Structure
 
     Public Structure FolderInfo
         Public source As IO.DirectoryInfo
         Public destination As IO.DirectoryInfo
     End Structure
 
-    ' TO DO: https://social.msdn.microsoft.com/Forums/en-US/acc88b7e-5245-424a-9e55-6749fc4da8be/cross-thread-raiseevent?forum=vblanguage
-
-    Private HostObject As Object
-
-    Public Sub New(ByVal HostObject As Object)
-        Me.HostObject = HostObject
-        Me.HostObject.Inv()
+    Public Sub New(ByVal HostForm As frmMain)
+        Me.HostForm = HostForm
     End Sub
 
-    Public Sub ThreadWrappedProcessFolder(ByVal threadparams As FolderInfo)
-        ProcessFolder(threadparams.source, threadparams.destination)
-    End Sub
+    Public Sub ProcessFolder(ByVal params As FolderInfo)
 
-    Private DoRaiseProcessingStartEvent(ByVal args as 
+        SendEvent(EventOptions.ProcessingStart, New ProcessingStartEventArgs With {.FilesFound = 1})
+        SendEvent(EventOptions.FileStart, New FileStartEventArgs With {.Filename = "test.jpg"})
+        SendEvent(EventOptions.FileDone, New FileDoneEventArgs With {.Filename = "test.jpg"})
+        SendEvent(EventOptions.ProcessingEnd, New ProcessingEndEventArgs With {.FilesProcessed = 1})
 
-    Public Sub ProcessFolder(ByRef source As IO.DirectoryInfo, ByRef destination As IO.DirectoryInfo)
-
-        RaiseEvent ProcessingStart(Me, 1)
-        RaiseEvent FileStart(Me, "test.jpg")
-        RaiseEvent FileDone(Me, "test.jpg")
-        RaiseEvent ProcessingEnd(Me, 1)
+        'RaiseEvent ProcessingStart(Me, New ProcessingStartEventArgs With {.FilesFound = 1})
+        'RaiseEvent FileStart(Me, New FileStartEventArgs With {.Filename = "test.jpg"})
+        'RaiseEvent FileDone(Me, New FileDoneEventArgs With {.Filename = "test.jpg"})
+        'RaiseEvent ProcessingEnd(Me, New ProcessingEndEventArgs With {.FilesProcessed = 1})
 
         '        cmdStart.Enabled = True
         '        'cmdStart.Enabled = False
@@ -143,13 +158,13 @@
     End Sub
 
     Public Function ResizeImage(ByRef originalImage As Bitmap, _
-                             ByVal maxWidth As Integer, _
-                             ByVal maxHeight As Integer, _
-                             ByVal PreserveAspect As Boolean, _
-                             ByVal InterpolationMode As Drawing2D.InterpolationMode,
-                             ByRef NewWidth As Integer, _
-                             ByRef NewHeight As Integer) _
-                            As Bitmap
+                                ByVal maxWidth As Integer, _
+                                ByVal maxHeight As Integer, _
+                                ByVal PreserveAspect As Boolean, _
+                                ByVal InterpolationMode As Drawing2D.InterpolationMode,
+                                ByRef NewWidth As Integer, _
+                                ByRef NewHeight As Integer) _
+                                As Bitmap
 
         If PreserveAspect = True Then
             Dim heightRatio As Double = CDbl(maxHeight) / CDbl(originalImage.Height)
@@ -185,4 +200,83 @@
         Return newImage
 
     End Function
+
+    Private HostForm As frmMain
+
+    Private Enum EventOptions
+        ProcessingStart
+        FileStart
+        FileDone
+        FileError
+        ProcessingEnd
+    End Enum
+
+    Private Delegate Sub RaiseProcessingStartEvent(ByVal e As ProcessingStartEventArgs)
+    Private Delegate Sub RaiseFileStartEvent(ByVal e As FileStartEventArgs)
+    Private Delegate Sub RaiseFileDoneEvent(ByVal e As FileDoneEventArgs)
+    Private Delegate Sub RaiseFileErrorEvent(ByVal e As FileErrorEventArgs)
+    Private Delegate Sub RaiseProcessingEndEvent(ByVal e As ProcessingEndEventArgs)
+
+    Private Sub DoRaiseProcessingStartEvent(ByVal e As ProcessingStartEventArgs)
+        RaiseEvent ProcessingStart(Me, e)
+    End Sub
+
+    Private Sub DoRaiseFileStartEvent(ByVal e As FileStartEventArgs)
+        RaiseEvent FileStart(Me, e)
+    End Sub
+
+    Private Sub DoRaiseFileDoneEvent(ByVal e As FileDoneEventArgs)
+        RaiseEvent FileDone(Me, e)
+    End Sub
+
+    Private Sub DoRaiseFileErrorEvent(ByVal e As FileErrorEventArgs)
+        RaiseEvent FileError(Me, e)
+    End Sub
+
+    Private Sub DoRaiseProcessingEndEvent(ByVal e As ProcessingEndEventArgs)
+        RaiseEvent ProcessingEnd(Me, e)
+    End Sub
+
+    Private Sub SendEvent(ByVal action As EventOptions, ByVal args As Object)
+        Select Case action
+            Case EventOptions.ProcessingStart
+                Dim drpse As New RaiseProcessingStartEvent(AddressOf DoRaiseProcessingStartEvent)
+                If HostForm.InvokeRequired Then
+                    HostForm.Invoke(drpse, args)
+                Else
+                    DoRaiseProcessingStartEvent(args)
+                End If
+            Case EventOptions.FileStart
+                Dim drpse As New RaiseFileStartEvent(AddressOf DoRaiseFileStartEvent)
+                If HostForm.InvokeRequired Then
+                    HostForm.Invoke(drpse, args)
+                Else
+                    DoRaiseFileStartEvent(args)
+                End If
+            Case EventOptions.FileDone
+                Dim drpse As New RaiseFileDoneEvent(AddressOf DoRaiseFileDoneEvent)
+                If HostForm.InvokeRequired Then
+                    HostForm.Invoke(drpse, args)
+                Else
+                    DoRaiseFileDoneEvent(args)
+                End If
+            Case EventOptions.FileError
+                Dim drpse As New RaiseFileErrorEvent(AddressOf DoRaiseFileErrorEvent)
+                If HostForm.InvokeRequired Then
+                    HostForm.Invoke(drpse, args)
+                Else
+                    DoRaiseFileErrorEvent(args)
+                End If
+            Case EventOptions.ProcessingEnd
+                Dim drpse As New RaiseProcessingEndEvent(AddressOf DoRaiseProcessingEndEvent)
+                If HostForm.InvokeRequired Then
+                    HostForm.Invoke(drpse, args)
+                Else
+                    DoRaiseProcessingEndEvent(args)
+                End If
+            Case Else
+                Throw New ArgumentException("Invalid event option", "action")
+        End Select
+    End Sub
+
 End Class

@@ -1,10 +1,10 @@
 ﻿Public Class frmMain
 
-    Friend WithEvents Resizer As New clsResizeThread()
+    Friend WithEvents Resizer As New clsResizeThread(Me)
     Private ResizerThread As Threading.Thread
 
     Private Sub cmdSetInputFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetInputFolder.Click
-        dlgFolder.Description = "Source Folder" & vbCrLf & "All recognised image files in the folder you select will be processed."
+        dlgFolder.Description = String.Format("{1}{0}{2}", Environment.NewLine, "Source Folder", "All recognised image files in the folder you select will be processed.")
         dlgFolder.ShowNewFolderButton = False
         If dlgFolder.ShowDialog = Windows.Forms.DialogResult.OK Then
             txtInputFolder.Text = dlgFolder.SelectedPath
@@ -12,7 +12,7 @@
     End Sub
 
     Private Sub cmdSetOutputFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetOutputFolder.Click
-        dlgFolder.Description = "Destination Folder" & vbCrLf & "All processed files will be saved to the folder you select with the new size appended to the filename."
+        dlgFolder.Description = String.Format("{1}{0}{2}", Environment.NewLine, "Destination Folder", "All processed files will be saved to the folder you select with the new size appended to the filename.")
         dlgFolder.ShowNewFolderButton = True
         If dlgFolder.ShowDialog = Windows.Forms.DialogResult.OK Then
             txtOutputFolder.Text = dlgFolder.SelectedPath
@@ -66,7 +66,19 @@
         ThreadParams.source = New IO.DirectoryInfo(txtInputFolder.Text)
         ThreadParams.destination = New IO.DirectoryInfo(txtOutputFolder.Text)
 
-        ResizerThread = New Threading.Thread(AddressOf Resizer.ThreadWrappedProcessFolder)
+        If Not IsNothing(ResizerThread) Then
+            If ResizerThread.IsAlive Then
+                Try
+                    ResizerThread.Abort()
+                    ResizerThread.Join()
+                Catch ex As Exception
+                    'Ignore exceptions; they're almost certainly
+                    'telling us the thread is already aborted, because synchronisation issues, which is fine.
+                End Try
+            End If
+        End If
+
+        ResizerThread = New Threading.Thread(AddressOf Resizer.ProcessFolder)
         ResizerThread.IsBackground = True
         ResizerThread.Start(ThreadParams)
 
@@ -101,23 +113,23 @@
         cmbOutputFormat.Enabled = Not chkUseInputFormat.Checked
     End Sub
 
-    Private Sub ResizeThread_FileError(ByVal sender As System.Object, ByVal filename As String, ByVal message As String) Handles Resizer.FileError
+    Private Sub ResizeThread_FileError(ByVal sender As System.Object, ByVal e As clsResizeThread.FileErrorEventArgs) Handles Resizer.FileError
         lblInformation.Text &= "Error"
     End Sub
 
-    Private Sub ResizeThread_FileStart(ByVal sender As System.Object, ByVal filename As String) Handles Resizer.FileStart
+    Private Sub ResizeThread_FileStart(ByVal sender As System.Object, ByVal e As clsResizeThread.FileStartEventArgs) Handles Resizer.FileStart
         lblInformation.Text &= "FileStart"
     End Sub
 
-    Private Sub ResizeThread_FileDone(ByVal sender As System.Object, ByVal filename As String) Handles Resizer.FileDone
+    Private Sub ResizeThread_FileDone(ByVal sender As System.Object, ByVal e As clsResizeThread.FileDoneEventArgs) Handles Resizer.FileDone
         lblInformation.Text &= "FileDone"
     End Sub
 
-    Private Sub ResizeThread_ProcessingEnd(ByVal sender As System.Object, ByVal FilesProcessed As UInteger) Handles Resizer.ProcessingEnd
+    Private Sub ResizeThread_ProcessingEnd(ByVal sender As System.Object, ByVal e As clsResizeThread.ProcessingEndEventArgs) Handles Resizer.ProcessingEnd
         lblInformation.Text &= "ProcessingEnd"
     End Sub
 
-    Private Sub ResizeThread_ProcessingStart(ByVal sender As System.Object, ByVal FilesFound As UInteger) Handles Resizer.ProcessingStart
+    Private Sub ResizeThread_ProcessingStart(ByVal sender As System.Object, ByVal e As clsResizeThread.ProcessingStartEventArgs) Handles Resizer.ProcessingStart
         lblInformation.Text &= "ProcessingStart"
     End Sub
 
