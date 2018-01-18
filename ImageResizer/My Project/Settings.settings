@@ -20,11 +20,11 @@
     <Setting Name="DefaultAppendSize" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DefaultOutputFormat" Type="System.Drawing.Imaging.ImageFormat" Scope="User">
-      <Value Profile="(Default)">Png</Value>
+    <Setting Name="DefaultOutputFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PNG</Value>
     </Setting>
-    <Setting Name="DefaultOutputQuality" Type="System.Drawing.Drawing2D.InterpolationMode" Scope="User">
-      <Value Profile="(Default)">HighQualityBicubic</Value>
+    <Setting Name="DefaultOutputQuality" Type="System.String" Scope="User">
+      <Value Profile="(Default)">High</Value>
     </Setting>
     <Setting Name="DefaultForceOutputFormat" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

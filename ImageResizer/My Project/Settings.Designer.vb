@@ -128,10 +128,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Png")>  _
-        Public Property DefaultOutputFormat() As Global.System.Drawing.Imaging.ImageFormat
+         Global.System.Configuration.DefaultSettingValueAttribute("PNG")>  _
+        Public Property DefaultOutputFormat() As String
             Get
-                Return CType(Me("DefaultOutputFormat"),Global.System.Drawing.Imaging.ImageFormat)
+                Return CType(Me("DefaultOutputFormat"),String)
             End Get
             Set
                 Me("DefaultOutputFormat") = value
@@ -140,10 +140,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("HighQualityBicubic")>  _
-        Public Property DefaultOutputQuality() As Global.System.Drawing.Drawing2D.InterpolationMode
+         Global.System.Configuration.DefaultSettingValueAttribute("High")>  _
+        Public Property DefaultOutputQuality() As String
             Get
-                Return CType(Me("DefaultOutputQuality"),Global.System.Drawing.Drawing2D.InterpolationMode)
+                Return CType(Me("DefaultOutputQuality"),String)
             End Get
             Set
                 Me("DefaultOutputQuality") = value

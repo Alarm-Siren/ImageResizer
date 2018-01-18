@@ -30,24 +30,24 @@ Partial Class frmMain
         Me.lblInformation = New System.Windows.Forms.Label()
         Me.cmdStart = New System.Windows.Forms.Button()
         Me.cmdAbout = New System.Windows.Forms.Button()
-        Me.chkSizeFilename = New System.Windows.Forms.CheckBox()
-        Me.numHeight = New System.Windows.Forms.NumericUpDown()
-        Me.numWidth = New System.Windows.Forms.NumericUpDown()
-        Me.chkAspectRatio = New System.Windows.Forms.CheckBox()
-        Me.txtOutputFolder = New System.Windows.Forms.TextBox()
-        Me.txtInputFolder = New System.Windows.Forms.TextBox()
         Me.lblHeight = New System.Windows.Forms.Label()
-        Me.lblWidth = New System.Windows.Forms.Label()
         Me.lblInputFolder = New System.Windows.Forms.Label()
         Me.lblOutputFolder = New System.Windows.Forms.Label()
         Me.cmbOutputFormat = New System.Windows.Forms.ComboBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.lblOutputFormat = New System.Windows.Forms.Label()
         Me.lblOutputQuality = New System.Windows.Forms.Label()
         Me.cmbQuality = New System.Windows.Forms.ComboBox()
         Me.cmdCancel = New System.Windows.Forms.Button()
-        CType(Me.numHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblWidth = New System.Windows.Forms.Label()
+        Me.numWidth = New System.Windows.Forms.NumericUpDown()
+        Me.chkUseInputFormat = New System.Windows.Forms.CheckBox()
+        Me.chkSizeFilename = New System.Windows.Forms.CheckBox()
+        Me.numHeight = New System.Windows.Forms.NumericUpDown()
+        Me.chkAspectRatio = New System.Windows.Forms.CheckBox()
+        Me.txtOutputFolder = New System.Windows.Forms.TextBox()
+        Me.txtInputFolder = New System.Windows.Forms.TextBox()
         CType(Me.numWidth, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.numHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdSetInputFolder
@@ -70,7 +70,7 @@ Partial Class frmMain
         '
         'prgProgress
         '
-        Me.prgProgress.Location = New System.Drawing.Point(12, 203)
+        Me.prgProgress.Location = New System.Drawing.Point(12, 202)
         Me.prgProgress.Name = "prgProgress"
         Me.prgProgress.Size = New System.Drawing.Size(370, 23)
         Me.prgProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous
@@ -78,18 +78,17 @@ Partial Class frmMain
         '
         'lblInformation
         '
-        Me.lblInformation.Location = New System.Drawing.Point(12, 229)
+        Me.lblInformation.Location = New System.Drawing.Point(12, 228)
         Me.lblInformation.Name = "lblInformation"
         Me.lblInformation.Size = New System.Drawing.Size(370, 101)
         Me.lblInformation.TabIndex = 0
-        Me.lblInformation.Text = "Information" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Note to self: Quality; Low = Bicubic, Medium = Bilinear, High = HQ" & _
-    " Bicubic, Ultra = HQ Bilinear"
+        Me.lblInformation.Text = "Information"
         Me.lblInformation.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'cmdStart
         '
         Me.cmdStart.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdStart.Location = New System.Drawing.Point(12, 174)
+        Me.cmdStart.Location = New System.Drawing.Point(12, 173)
         Me.cmdStart.Name = "cmdStart"
         Me.cmdStart.Size = New System.Drawing.Size(151, 23)
         Me.cmdStart.TabIndex = 12
@@ -98,86 +97,21 @@ Partial Class frmMain
         '
         'cmdAbout
         '
-        Me.cmdAbout.Location = New System.Drawing.Point(326, 174)
+        Me.cmdAbout.Location = New System.Drawing.Point(326, 173)
         Me.cmdAbout.Name = "cmdAbout"
         Me.cmdAbout.Size = New System.Drawing.Size(56, 23)
         Me.cmdAbout.TabIndex = 14
         Me.cmdAbout.Text = "&About"
         Me.cmdAbout.UseVisualStyleBackColor = True
         '
-        'chkSizeFilename
-        '
-        Me.chkSizeFilename.Checked = True
-        Me.chkSizeFilename.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkSizeFilename.Location = New System.Drawing.Point(211, 90)
-        Me.chkSizeFilename.Name = "chkSizeFilename"
-        Me.chkSizeFilename.Size = New System.Drawing.Size(148, 24)
-        Me.chkSizeFilename.TabIndex = 10
-        Me.chkSizeFilename.Text = "Append Size to Filename"
-        Me.chkSizeFilename.UseVisualStyleBackColor = True
-        '
-        'numHeight
-        '
-        Me.numHeight.Location = New System.Drawing.Point(92, 67)
-        Me.numHeight.Maximum = New Decimal(New Integer() {8000, 0, 0, 0})
-        Me.numHeight.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.numHeight.Name = "numHeight"
-        Me.numHeight.Size = New System.Drawing.Size(71, 20)
-        Me.numHeight.TabIndex = 5
-        Me.numHeight.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'numWidth
-        '
-        Me.numWidth.Location = New System.Drawing.Point(92, 93)
-        Me.numWidth.Maximum = New Decimal(New Integer() {8000, 0, 0, 0})
-        Me.numWidth.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.numWidth.Name = "numWidth"
-        Me.numWidth.Size = New System.Drawing.Size(71, 20)
-        Me.numWidth.TabIndex = 6
-        Me.numWidth.Value = New Decimal(New Integer() {8000, 0, 0, 0})
-        '
-        'chkAspectRatio
-        '
-        Me.chkAspectRatio.Checked = True
-        Me.chkAspectRatio.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkAspectRatio.Location = New System.Drawing.Point(211, 64)
-        Me.chkAspectRatio.Name = "chkAspectRatio"
-        Me.chkAspectRatio.Size = New System.Drawing.Size(148, 24)
-        Me.chkAspectRatio.TabIndex = 9
-        Me.chkAspectRatio.Text = "Maintain Aspect Ratio"
-        Me.chkAspectRatio.UseVisualStyleBackColor = True
-        '
-        'txtOutputFolder
-        '
-        Me.txtOutputFolder.Location = New System.Drawing.Point(92, 41)
-        Me.txtOutputFolder.Name = "txtOutputFolder"
-        Me.txtOutputFolder.Size = New System.Drawing.Size(239, 20)
-        Me.txtOutputFolder.TabIndex = 3
-        '
-        'txtInputFolder
-        '
-        Me.txtInputFolder.Location = New System.Drawing.Point(92, 15)
-        Me.txtInputFolder.Name = "txtInputFolder"
-        Me.txtInputFolder.Size = New System.Drawing.Size(239, 20)
-        Me.txtInputFolder.TabIndex = 1
-        '
         'lblHeight
         '
         Me.lblHeight.AutoSize = True
-        Me.lblHeight.Location = New System.Drawing.Point(20, 69)
+        Me.lblHeight.Location = New System.Drawing.Point(20, 95)
         Me.lblHeight.Name = "lblHeight"
         Me.lblHeight.Size = New System.Drawing.Size(66, 13)
         Me.lblHeight.TabIndex = 0
         Me.lblHeight.Text = "New Height:"
-        '
-        'lblWidth
-        '
-        Me.lblWidth.AutoSize = True
-        Me.lblWidth.Location = New System.Drawing.Point(23, 95)
-        Me.lblWidth.Name = "lblWidth"
-        Me.lblWidth.Size = New System.Drawing.Size(63, 13)
-        Me.lblWidth.TabIndex = 0
-        Me.lblWidth.Text = "New Width:"
         '
         'lblInputFolder
         '
@@ -202,21 +136,10 @@ Partial Class frmMain
         Me.cmbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbOutputFormat.FormattingEnabled = True
         Me.cmbOutputFormat.Items.AddRange(New Object() {"PNG", "JPEG", "TIFF", "BMP", "GIF"})
-        Me.cmbOutputFormat.Location = New System.Drawing.Point(92, 120)
+        Me.cmbOutputFormat.Location = New System.Drawing.Point(92, 119)
         Me.cmbOutputFormat.Name = "cmbOutputFormat"
         Me.cmbOutputFormat.Size = New System.Drawing.Size(71, 21)
         Me.cmbOutputFormat.TabIndex = 7
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.Checked = True
-        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox1.Location = New System.Drawing.Point(211, 118)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(148, 24)
-        Me.CheckBox1.TabIndex = 11
-        Me.CheckBox1.Text = "Use Format of Input"
-        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'lblOutputFormat
         '
@@ -230,7 +153,7 @@ Partial Class frmMain
         'lblOutputQuality
         '
         Me.lblOutputQuality.AutoSize = True
-        Me.lblOutputQuality.Location = New System.Drawing.Point(9, 150)
+        Me.lblOutputQuality.Location = New System.Drawing.Point(9, 149)
         Me.lblOutputQuality.Name = "lblOutputQuality"
         Me.lblOutputQuality.Size = New System.Drawing.Size(77, 13)
         Me.lblOutputQuality.TabIndex = 0
@@ -241,7 +164,7 @@ Partial Class frmMain
         Me.cmbQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbQuality.FormattingEnabled = True
         Me.cmbQuality.Items.AddRange(New Object() {"Low", "Medium", "High", "Ultra"})
-        Me.cmbQuality.Location = New System.Drawing.Point(92, 147)
+        Me.cmbQuality.Location = New System.Drawing.Point(92, 146)
         Me.cmbQuality.Name = "cmbQuality"
         Me.cmbQuality.Size = New System.Drawing.Size(71, 21)
         Me.cmbQuality.TabIndex = 8
@@ -249,12 +172,95 @@ Partial Class frmMain
         'cmdCancel
         '
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Location = New System.Drawing.Point(169, 174)
+        Me.cmdCancel.Enabled = False
+        Me.cmdCancel.Location = New System.Drawing.Point(169, 173)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(151, 23)
         Me.cmdCancel.TabIndex = 13
         Me.cmdCancel.Text = "&Cancel"
         Me.cmdCancel.UseVisualStyleBackColor = True
+        '
+        'lblWidth
+        '
+        Me.lblWidth.AutoSize = True
+        Me.lblWidth.Location = New System.Drawing.Point(23, 69)
+        Me.lblWidth.Name = "lblWidth"
+        Me.lblWidth.Size = New System.Drawing.Size(63, 13)
+        Me.lblWidth.TabIndex = 15
+        Me.lblWidth.Text = "New Width:"
+        '
+        'numWidth
+        '
+        Me.numWidth.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.ImageResizer.My.MySettings.Default, "DefaultWidth", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.numWidth.Location = New System.Drawing.Point(92, 67)
+        Me.numWidth.Maximum = New Decimal(New Integer() {8000, 0, 0, 0})
+        Me.numWidth.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numWidth.Name = "numWidth"
+        Me.numWidth.Size = New System.Drawing.Size(71, 20)
+        Me.numWidth.TabIndex = 16
+        Me.numWidth.Value = Global.ImageResizer.My.MySettings.Default.DefaultWidth
+        '
+        'chkUseInputFormat
+        '
+        Me.chkUseInputFormat.Checked = Global.ImageResizer.My.MySettings.Default.DefaultForceOutputFormat
+        Me.chkUseInputFormat.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.ImageResizer.My.MySettings.Default, "DefaultForceOutputFormat", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkUseInputFormat.Location = New System.Drawing.Point(211, 118)
+        Me.chkUseInputFormat.Name = "chkUseInputFormat"
+        Me.chkUseInputFormat.Size = New System.Drawing.Size(148, 24)
+        Me.chkUseInputFormat.TabIndex = 11
+        Me.chkUseInputFormat.Text = "Preserve Input Format"
+        Me.chkUseInputFormat.UseVisualStyleBackColor = True
+        '
+        'chkSizeFilename
+        '
+        Me.chkSizeFilename.Checked = Global.ImageResizer.My.MySettings.Default.DefaultAppendSize
+        Me.chkSizeFilename.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkSizeFilename.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.ImageResizer.My.MySettings.Default, "DefaultAppendSize", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkSizeFilename.Location = New System.Drawing.Point(211, 90)
+        Me.chkSizeFilename.Name = "chkSizeFilename"
+        Me.chkSizeFilename.Size = New System.Drawing.Size(148, 24)
+        Me.chkSizeFilename.TabIndex = 10
+        Me.chkSizeFilename.Text = "Append Size to Filename"
+        Me.chkSizeFilename.UseVisualStyleBackColor = True
+        '
+        'numHeight
+        '
+        Me.numHeight.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.ImageResizer.My.MySettings.Default, "DefaultHeight", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.numHeight.Location = New System.Drawing.Point(92, 93)
+        Me.numHeight.Maximum = New Decimal(New Integer() {8000, 0, 0, 0})
+        Me.numHeight.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numHeight.Name = "numHeight"
+        Me.numHeight.Size = New System.Drawing.Size(71, 20)
+        Me.numHeight.TabIndex = 5
+        Me.numHeight.Value = Global.ImageResizer.My.MySettings.Default.DefaultHeight
+        '
+        'chkAspectRatio
+        '
+        Me.chkAspectRatio.Checked = Global.ImageResizer.My.MySettings.Default.DefaultMaintainAspect
+        Me.chkAspectRatio.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkAspectRatio.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.ImageResizer.My.MySettings.Default, "DefaultMaintainAspect", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkAspectRatio.Location = New System.Drawing.Point(211, 64)
+        Me.chkAspectRatio.Name = "chkAspectRatio"
+        Me.chkAspectRatio.Size = New System.Drawing.Size(148, 24)
+        Me.chkAspectRatio.TabIndex = 9
+        Me.chkAspectRatio.Text = "Maintain Aspect Ratio"
+        Me.chkAspectRatio.UseVisualStyleBackColor = True
+        '
+        'txtOutputFolder
+        '
+        Me.txtOutputFolder.Location = New System.Drawing.Point(92, 41)
+        Me.txtOutputFolder.Name = "txtOutputFolder"
+        Me.txtOutputFolder.Size = New System.Drawing.Size(239, 20)
+        Me.txtOutputFolder.TabIndex = 3
+        '
+        'txtInputFolder
+        '
+        Me.txtInputFolder.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.ImageResizer.My.MySettings.Default, "DefaultSource", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.txtInputFolder.Location = New System.Drawing.Point(92, 15)
+        Me.txtInputFolder.Name = "txtInputFolder"
+        Me.txtInputFolder.Size = New System.Drawing.Size(239, 20)
+        Me.txtInputFolder.TabIndex = 1
+        Me.txtInputFolder.Text = Global.ImageResizer.My.MySettings.Default.DefaultSource
         '
         'frmMain
         '
@@ -263,19 +269,19 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdCancel
         Me.ClientSize = New System.Drawing.Size(394, 339)
+        Me.Controls.Add(Me.lblWidth)
+        Me.Controls.Add(Me.numWidth)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.lblOutputQuality)
         Me.Controls.Add(Me.cmbQuality)
         Me.Controls.Add(Me.lblOutputFormat)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.chkUseInputFormat)
         Me.Controls.Add(Me.cmbOutputFormat)
         Me.Controls.Add(Me.lblOutputFolder)
         Me.Controls.Add(Me.lblInputFolder)
-        Me.Controls.Add(Me.lblWidth)
         Me.Controls.Add(Me.lblHeight)
         Me.Controls.Add(Me.chkSizeFilename)
         Me.Controls.Add(Me.numHeight)
-        Me.Controls.Add(Me.numWidth)
         Me.Controls.Add(Me.chkAspectRatio)
         Me.Controls.Add(Me.cmdAbout)
         Me.Controls.Add(Me.cmdStart)
@@ -291,8 +297,8 @@ Partial Class frmMain
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ImageResizer"
-        CType(Me.numHeight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numWidth, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.numHeight, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -308,17 +314,17 @@ Partial Class frmMain
     Friend WithEvents cmdAbout As System.Windows.Forms.Button
     Friend WithEvents chkSizeFilename As System.Windows.Forms.CheckBox
     Friend WithEvents numHeight As System.Windows.Forms.NumericUpDown
-    Friend WithEvents numWidth As System.Windows.Forms.NumericUpDown
     Friend WithEvents chkAspectRatio As System.Windows.Forms.CheckBox
     Friend WithEvents lblHeight As System.Windows.Forms.Label
-    Friend WithEvents lblWidth As System.Windows.Forms.Label
     Friend WithEvents lblInputFolder As System.Windows.Forms.Label
     Friend WithEvents lblOutputFolder As System.Windows.Forms.Label
     Friend WithEvents cmbOutputFormat As System.Windows.Forms.ComboBox
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents chkUseInputFormat As System.Windows.Forms.CheckBox
     Friend WithEvents lblOutputFormat As System.Windows.Forms.Label
     Friend WithEvents lblOutputQuality As System.Windows.Forms.Label
     Friend WithEvents cmbQuality As System.Windows.Forms.ComboBox
     Friend WithEvents cmdCancel As System.Windows.Forms.Button
+    Friend WithEvents lblWidth As System.Windows.Forms.Label
+    Friend WithEvents numWidth As System.Windows.Forms.NumericUpDown
 
 End Class
