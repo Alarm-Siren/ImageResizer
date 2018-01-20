@@ -39,6 +39,7 @@ Partial Class frmMain
         Me.cmbQuality = New System.Windows.Forms.ComboBox()
         Me.cmdCancel = New System.Windows.Forms.Button()
         Me.lblWidth = New System.Windows.Forms.Label()
+        Me.chkOverwriteExisting = New System.Windows.Forms.CheckBox()
         Me.numWidth = New System.Windows.Forms.NumericUpDown()
         Me.chkUseInputFormat = New System.Windows.Forms.CheckBox()
         Me.chkSizeFilename = New System.Windows.Forms.CheckBox()
@@ -189,6 +190,17 @@ Partial Class frmMain
         Me.lblWidth.TabIndex = 15
         Me.lblWidth.Text = "New Width:"
         '
+        'chkOverwriteExisting
+        '
+        Me.chkOverwriteExisting.Checked = Global.ImageResizer.My.MySettings.Default.DefaultOverwriteExisting
+        Me.chkOverwriteExisting.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.ImageResizer.My.MySettings.Default, "DefaultOverwriteExisting", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkOverwriteExisting.Location = New System.Drawing.Point(211, 144)
+        Me.chkOverwriteExisting.Name = "chkOverwriteExisting"
+        Me.chkOverwriteExisting.Size = New System.Drawing.Size(148, 24)
+        Me.chkOverwriteExisting.TabIndex = 17
+        Me.chkOverwriteExisting.Text = "Overwrite Existing Files"
+        Me.chkOverwriteExisting.UseVisualStyleBackColor = True
+        '
         'numWidth
         '
         Me.numWidth.DataBindings.Add(New System.Windows.Forms.Binding("Value", Global.ImageResizer.My.MySettings.Default, "DefaultWidth", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
@@ -271,6 +283,7 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdCancel
         Me.ClientSize = New System.Drawing.Size(394, 339)
+        Me.Controls.Add(Me.chkOverwriteExisting)
         Me.Controls.Add(Me.lblWidth)
         Me.Controls.Add(Me.numWidth)
         Me.Controls.Add(Me.cmdCancel)
@@ -328,5 +341,6 @@ Partial Class frmMain
     Friend WithEvents cmdCancel As System.Windows.Forms.Button
     Friend WithEvents lblWidth As System.Windows.Forms.Label
     Friend WithEvents numWidth As System.Windows.Forms.NumericUpDown
+    Friend WithEvents chkOverwriteExisting As System.Windows.Forms.CheckBox
 
 End Class

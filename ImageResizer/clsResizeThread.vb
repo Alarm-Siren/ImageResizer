@@ -28,8 +28,9 @@
     End Structure
 
     Public Structure FolderInfo
-        Public source As IO.DirectoryInfo
-        Public destination As IO.DirectoryInfo
+        Public SourceFolder As IO.DirectoryInfo
+        Public DestinationFolder As IO.DirectoryInfo
+        Public 
     End Structure
 
     Public Sub New(ByVal HostForm As frmMain)

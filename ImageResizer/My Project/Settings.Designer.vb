@@ -161,6 +161,18 @@ Namespace My
                 Me("DefaultForceOutputFormat") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property DefaultOverwriteExisting() As Boolean
+            Get
+                Return CType(Me("DefaultOverwriteExisting"),Boolean)
+            End Get
+            Set
+                Me("DefaultOverwriteExisting") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

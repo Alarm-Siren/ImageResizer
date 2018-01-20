@@ -12,7 +12,7 @@
     End Sub
 
     Private Sub cmdSetOutputFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSetOutputFolder.Click
-        dlgFolder.Description = String.Format("{1}{0}{2}", Environment.NewLine, "Destination Folder", "All processed files will be saved to the folder you select with the new size appended to the filename.")
+        dlgFolder.Description = String.Format("{1}{0}{2}", Environment.NewLine, "Destination Folder", "All processed files will be saved to the folder you select.")
         dlgFolder.ShowNewFolderButton = True
         If dlgFolder.ShowDialog = Windows.Forms.DialogResult.OK Then
             txtOutputFolder.Text = dlgFolder.SelectedPath
@@ -63,8 +63,8 @@
         End If
 
         Dim ThreadParams As New clsResizeThread.FolderInfo
-        ThreadParams.source = New IO.DirectoryInfo(txtInputFolder.Text)
-        ThreadParams.destination = New IO.DirectoryInfo(txtOutputFolder.Text)
+        ThreadParams.SourceFolder = New IO.DirectoryInfo(txtInputFolder.Text)
+        ThreadParams.DestinationFolder = New IO.DirectoryInfo(txtOutputFolder.Text)
 
         If Not IsNothing(ResizerThread) Then
             If ResizerThread.IsAlive Then
@@ -77,6 +77,19 @@
                 End Try
             End If
         End If
+
+        cmdStart.Enabled = False
+        cmdCancel.Enabled = True
+        cmdSetInputFolder.Enabled = False
+        cmdSetOutputFolder.Enabled = False
+        chkAspectRatio.Enabled = False
+        chkOverwriteExisting.Enabled = False
+        chkSizeFilename.Enabled = False
+        chkUseInputFormat.Enabled = False
+        txtInputFolder.Enabled = False
+        txtOutputFolder.Enabled = False
+        cmbOutputFormat.Enabled = False
+        cmbQuality.Enabled = False
 
         ResizerThread = New Threading.Thread(AddressOf Resizer.ProcessFolder)
         ResizerThread.IsBackground = True
@@ -107,6 +120,30 @@
 
     Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
 
+        If Not IsNothing(ResizerThread) Then
+            If ResizerThread.IsAlive Then
+                Try
+                    ResizerThread.Abort()
+                    ResizerThread.Join()
+                Catch ex As Exception
+                    'Ignore exceptions; they're almost certainly
+                    'telling us the thread is already aborted, because synchronisation issues, which is fine.
+                End Try
+            End If
+        End If
+
+        cmdStart.Enabled = True
+        cmdCancel.Enabled = False
+        cmdSetInputFolder.Enabled = True
+        cmdSetOutputFolder.Enabled = True
+        chkAspectRatio.Enabled = True
+        chkOverwriteExisting.Enabled = True
+        chkSizeFilename.Enabled = True
+        chkUseInputFormat.Enabled = True
+        txtInputFolder.Enabled = True
+        txtOutputFolder.Enabled = True
+        Call chkUseInputFormat_CheckedChanged(Me, New EventArgs)
+        cmbQuality.Enabled = True
     End Sub
 
     Private Sub chkUseInputFormat_CheckedChanged(sender As Object, e As EventArgs) Handles chkUseInputFormat.CheckedChanged
