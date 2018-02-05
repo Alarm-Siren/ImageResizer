@@ -1,6 +1,4 @@
-﻿'Imports System.Threading
-'Imports System.Collections.Specialized
-
+﻿
 'https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/component-that-supports-the-event-based-asynchronous-pattern
 ' https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/implementing-the-event-based-asynchronous-pattern
 'https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/best-practices-for-implementing-the-event-based-asynchronous-pattern
@@ -66,7 +64,7 @@ Public Class BulkResizer
     Public Event ProcessFolderProgressChanged As ProcessFolderProgressChangedEventHandler
 
     Public Sub ProcessFolderAsync()
-
+        System.ComponentModel.AsyncOperationManager.CreateOperation(
     End Sub
 
     Public ReadOnly Property IsBusy As Boolean

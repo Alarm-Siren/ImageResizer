@@ -1,3 +1,5 @@
+**THIS APPLICATION IS STILL IN DEVELOPMENT**
+
 # Image Resizer
 *Version 2.0.0*
 
